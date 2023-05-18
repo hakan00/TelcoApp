@@ -1,0 +1,13 @@
+<app-navbar
+  *ngIf="router.url !== '/login'"
+  class="navigation"
+  (onLogoutWithValue)="handleOnLogoutWithValue($event)"
+></app-navbar>
+
+<div [ngClass]="router.url !== '/login' ? 'container-app' : 'container-login'">
+  <app-overlay-title [text]="overlayTitleText"></app-overlay-title>
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer *ngIf="router.url !== '/login'" class="footer"></app-footer>
+<app-loading></app-loading>

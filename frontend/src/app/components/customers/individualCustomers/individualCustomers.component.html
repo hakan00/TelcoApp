@@ -1,0 +1,80 @@
+<div class="container">
+  <form class="mb-3 mt-4">
+    <div class="row">
+      <div class="col">
+        <input
+          class="form-control"
+          placeholder="Filter By Customer Name"
+          type="text"
+          name="customerName"
+          [(ngModel)]="customerName"
+        />
+      </div>
+      <div class="col">
+        <input
+          class="form-control"
+          placeholder="Filter By National Identity "
+          type="text"
+          name="nationalIdentity"
+          [(ngModel)]="nationalIdentity"
+        />
+      </div>
+      <div class="col">
+        <input
+          class="form-control"
+          placeholder=" Filter By Date Of Birth"
+          type="date"
+          name="birthDate"
+          [(ngModel)]="birthDate"
+        />
+      </div>
+    </div>
+  </form>
+  <div>
+    <button
+      (click)="goToCreateCustomerPage()"
+      type="button"
+      class="btn btn-primary float-right mb-2 mx-2"
+      style="
+        --bs-btn-padding-y: 0.75rem;
+        --bs-btn-padding-x: 0.75rem;
+        --bs-btn-font-size: 0.75rem;
+      "
+    >
+      Create Customer
+    </button>
+
+    <div class="row customer-cards">
+      <div
+        class="col-sm-2"
+        style="width: 18rem"
+        *ngFor="
+          let item of individualCustomers
+            | filterName: 'name':customerName
+            | filterName: 'id':nationalIdentity
+            | filterName: 'birthDay':birthDate
+        "
+      >
+        <div class="card ol-sm-3 mt-2 px-2 p-2 m-1">
+          <div class="card-body">
+            <i
+              class="bi bi-person-bounding-box heading"
+              style="font-size: 1.5rem"
+            ></i>
+            <h2 class="card-title">{{ item.firstName | capitalizeFirst}} {{ item.lastName | capitalizeFirst}}</h2>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <button
+              (click)="showDetails(item.customerId)"
+              type="button"
+              class="btn btn-primary"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

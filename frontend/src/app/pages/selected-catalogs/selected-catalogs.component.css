@@ -1,0 +1,22 @@
+.customer {
+   margin-top: 1.25rem;
+   width: 35%;
+   min-width: 15rem;
+   max-width: 25rem;
+}
+
+.form {
+   display: flex;
+   flex-direction: column;
+}
+
+.form input {
+   width: 1.4rem;
+   height: 1.4rem;
+   margin-right: 0.45rem;
+}
+
+.form label {
+   font-size: medium;
+   font-weight: 500;
+}

@@ -1,0 +1,146 @@
+<div class="forms">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      pInputText
+      [(ngModel)]="searchText"
+      placeholder="Search among services"
+    />
+  </span>
+
+  <form
+    *ngIf="displayAddForm"
+    class="addition-form"
+    [formGroup]="addForm"
+    (submit)="add()"
+  >
+    <input
+      formControlName="name"
+      type="text"
+      placeholder="Enter a service name"
+      pInputText
+    />
+    <br />
+    <button
+      pButton
+      pRipple
+      type="submit"
+      icon="pi pi-check"
+      class="p-button-rounded p-button-text p-button-success mr-2"
+    ></button>
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-times"
+      (click)="onAddCancel()"
+      class="p-button-rounded p-button-text p-button-danger"
+    ></button>
+  </form>
+</div>
+
+<div class="card">
+  <p-table
+    [value]="services | filterService: searchText"
+    dataKey="id"
+    editMode="row"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 10%">
+          <div class="text-center">No</div>
+        </th>
+        <th style="width: 60%">Services</th>
+        <th style="width: 20%">
+          <div class="text-center">Edit</div>
+        </th>
+        <th style="width: 10%">
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-plus"
+            (click)="onAdd()"
+            class="p-button-rounded p-button-text p-button-success mr-2"
+          ></button>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template
+      pTemplate="body"
+      let-service
+      let-editing="editing"
+      let-ri="rowIndex"
+    >
+      <tr [pEditableRow]="service">
+        <td>
+          <div class="text-center">
+            {{ ri + 1 }}
+          </div>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="service.name"
+                required
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ service.name }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <div class="flex align-items-center justify-content-center text-center gap-2">
+            <button
+              *ngIf="!editing"
+              pButton
+              pRipple
+              type="button"
+              pInitEditableRow
+              icon="pi pi-pencil"
+              (click)="onRowEditInit(service)"
+              class="p-button-rounded p-button-text"
+            ></button>
+            <button
+              *ngIf="editing"
+              pButton
+              pRipple
+              type="button"
+              pSaveEditableRow
+              icon="pi pi-check"
+              (click)="onRowEditSave(service)"
+              class="p-button-rounded p-button-text p-button-success mr-2"
+            ></button>
+            <button
+              *ngIf="editing"
+              pButton
+              pRipple
+              type="button"
+              pCancelEditableRow
+              icon="pi pi-times"
+              (click)="onRowEditCancel(service, ri)"
+              class="p-button-rounded p-button-text p-button-danger"
+            ></button>
+          </div>
+        </td>
+        <td>
+          <div class="flex align-items-center justify-content-center">
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-trash"
+              (click)="delete(service)"
+              class="p-button-rounded p-button-text p-button-danger"
+            ></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

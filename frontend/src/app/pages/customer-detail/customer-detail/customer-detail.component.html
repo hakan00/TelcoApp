@@ -1,0 +1,22 @@
+<div class="container text-center mt-2 mw-25 customer-cards">
+   <div class="col-4 text-center">
+    <div *ngIf="!!details">
+        <div class="row mt-2 px-2 p-2 m-1">
+            <div class="card c-card">
+              <div class="card-body c-card">
+                <i class="bi bi-person-bounding-box heading" style="font-size: 1.5rem"></i>
+                <h1><strong>User Details</strong></h1>
+                <h3 class="card-title c-title"><strong>Customer Id:</strong> {{ details.customerId }}</h3>
+                        <h3 class="card-title"><strong>Name:</strong> {{ details.firstName | capitalizeFirst }} {{ details.lastName | capitalizeFirst }}</h3>
+                        <h3 class="card-title"><strong>National Identity:</strong> {{ details.nationalIdentity }}</h3>
+                        <h3 class="card-title"><strong>Birth Date:</strong> {{ details.birthDate }}</h3>
+                        <div *ngFor="let item of subscription">
+                <h3 class="card-title"><strong>Service Id:</strong> {{ item.serviceId }}</h3>
+                <h3 class="card-title"><strong>Date Started:</strong> {{ item.dateStarted }} </h3>
+            </div>
+        </div>
+    </div>
+    </div>
+   </div>
+</div>
+   

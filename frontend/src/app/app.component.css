@@ -1,0 +1,32 @@
+.navigation {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 100vw;
+  height: 4rem;
+}
+
+.container-app {
+  height: calc(100% - 8rem);
+  position: relative;
+  top: 4rem;
+  margin-right: 0;
+  margin-left: 0;
+  padding-left: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-right: 0;
+  overflow-y: scroll;
+}
+
+.container-login {
+  margin-top: 5rem;
+}
+
+.footer {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  width: 100vw;
+  height: 4rem;
+}

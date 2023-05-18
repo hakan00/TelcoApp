@@ -1,0 +1,16 @@
+.customer-cards {
+  display: flex;
+  justify-content: center;
+}
+
+.customer-cards h1 {
+   text-align: center;
+}
+
+.c-title {
+   margin-top: 1rem;
+}
+
+.c-card  {
+   min-width: 25rem;
+}

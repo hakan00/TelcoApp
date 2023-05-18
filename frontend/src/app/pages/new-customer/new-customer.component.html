@@ -1,0 +1,41 @@
+<div class="container text-center customer">
+  <div class="inner-customer" *ngIf="selectedCatalogs && selectedCatalogs.length > 0">
+    <i *ngIf="customerType == 'individual'" class="bi bi-person" style="font-size: 1.5rem"></i>
+    <i *ngIf="customerType == 'corporate'" class="bi bi-people" style="font-size: 1.5rem"></i>
+    <h1 *ngIf="customerType == 'individual'">{{ individualCustomerInfo.firstName | capitalizeFirst}} {{ individualCustomerInfo.lastName | capitalizeFirst}}</h1>
+    <h1 *ngIf="customerType == 'corporate'">{{ corporateCustomerInfo.companyName | capitalizeFirst}}</h1>
+    <p><strong>{{ customerType | capitalizeFirst}} Customer</strong></p>
+    <div *ngIf="customerType == 'individual'">
+      <p>
+        <strong>Birthday:</strong>
+        {{ individualCustomerInfo.birthDate }}
+      </p>
+    </div>
+    <div *ngIf="customerType == 'corporate'">
+      <p><strong>Tax Number:</strong> {{ corporateCustomerInfo.taxNumber }}</p>
+    </div>
+    <hr
+      style="height: 2px; border-width: 0; color: gray; background-color: gray"
+    />
+    <h3><strong>Selected Catalogs</strong></h3>
+    <div *ngFor="let item of selectedCatalogs">
+      <p><strong>{{ item.name }}</strong> </p>
+      <p>{{ item.price }}₺ </p>
+    </div>
+    <p><strong>Total: {{total}}₺</strong></p>
+    <button
+      class="btn btn-success align-left"
+      style="float: left"
+      (click)="back()"
+    >
+      Back
+    </button>
+    <button
+      class="btn btn-success align-right"
+      style="float: right"
+      (click)="save()"
+    >
+      Save
+    </button>
+  </div>
+</div>

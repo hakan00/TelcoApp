@@ -1,0 +1,13 @@
+<div class="container customer">
+   <div class="form">
+      <h1><strong>Catalogs</strong></h1>
+      <form *ngIf="catalogs" [formGroup]="catalogForm"> 
+         <div class="mb-3 form-check" *ngFor="let item of catalogs; let i = index">
+            <label for="catalog{{i}}" class="form-check-label">{{ item.name }} <br>{{item.price}}₺ <br> </label>
+            <input type="checkbox" class="form-check-input" formControlName="selectedCatalogs[{{i}}]" id="catalog{{i}}" >
+         </div>
+            <button class="btn btn-success align-left" style="float: left;" (click)="back()">Back</button>
+            <button class="btn btn-success align-right" style="float: right;" (click)="next()">Next</button>
+      </form>
+   </div>
+</div>

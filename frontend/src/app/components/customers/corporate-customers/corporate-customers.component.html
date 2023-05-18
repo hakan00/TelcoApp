@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-4">
+      <input [(ngModel)]="companyName" type="text" class="form-control" placeholder="Search By Company Name">
+    </div>
+    <div class="col mt-4">
+      <input [(ngModel)]="taxNumber" type="text" class="form-control" placeholder="Search By Tax Number">
+    </div>
+  </div>
+  <div class="col mt-4">
+    <button (click)="goToCreateCustomerPage()" type="button" class="btn btn-primary float-right  mx-2 "
+      style="--bs-btn-padding-y: .75rem; --bs-btn-padding-x: .75rem; --bs-btn-font-size: .75rem;">
+      Create Customer
+    </button>
+  </div>
+  <br>
+  <div class="row customer-cards">
+    <div class="card col-sm-3 px-2 p-2 m-1" style="width: 18rem;"
+      *ngFor="let item of corporateCustomers
+      | filterCompany:'name':companyName
+      | filterCompany:'id':taxNumber ">
+
+      <div class="card-body">
+        <i class="bi bi-building heading" style="font-size: 1.5rem"></i>
+        <h2 class="card-title">{{ item.companyName | capitalizeFirst }}</h2>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <button (click)="showDetails(item.customerId)" type="button" class="btn btn-primary">Details</button>
+      </div>
+    </div>
+  </div>
+</div>

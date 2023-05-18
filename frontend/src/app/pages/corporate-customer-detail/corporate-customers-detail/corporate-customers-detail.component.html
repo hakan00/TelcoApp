@@ -1,0 +1,19 @@
+<div class="container customer-cards">
+  <div *ngIf="!!details">
+    <h1><strong>User Details</strong></h1>
+    <div class="col-sm-3 mt-2 px-2 p-2 m-1">
+      <div class="card c-card">
+        <div class="card-body c-card">
+          <i class="bi bi-building heading" style="font-size: 1.5rem"></i>
+          <h3 class="card-title c-title"><strong>Customer Id:</strong> {{ details.customerId }}</h3>
+          <h3 class="card-title"><strong>Company Name:</strong> {{ details.companyName | capitalizeFirst }}</h3>
+          <h3 class="card-title"><strong>Tax Number:</strong> {{ details.taxNumber }}</h3>
+          <div class="row" *ngFor="let item of subscription">
+            <h3 class="card-title"><strong>Service Id:</strong> {{ item.serviceId }}</h3>
+            <h3 class="card-title"><strong>Date Started:</strong> {{ item.dateStarted }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
